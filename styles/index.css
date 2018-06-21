@@ -45,3 +45,12 @@
     font-size: 20px;
     margin-bottom: 15px;
   }
+
+  .js-bookmark-list-desc {
+      margin-top: 20px;
+  }
+
+form {
+    border: 1px solid grey;
+    padding: 20px;
+}

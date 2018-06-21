@@ -12,18 +12,15 @@
     <div class="container">
         <h1>Bookmark List</h1>
         <form id="js-bookmark-list-form">
-            <label for="bookmark-list-entry">Add a bookmark</label>
+            <h3>Add a bookmark</h3>
+            <label for="bookmark-list-entry">Bookmark Title</label>
             <input type="text" name="bookmark-list-entry" class="js-bookmark-list-entry" placeholder="Title of the bookmark">
-            
-            <div>
-                <label for="bookmark-link-entry">Bookmark Link</label>
-            </div>
-                <input type="text" name="bookmark-link-entry" class="js-bookmark-link-entry" placeholder="Link of the bookmark">
-            <div>
-                <textarea name="bookmark-list-desc" class="js-bookmark-list-desc" rows="5" cols="50">Youre description of the movie.</textarea>
-            </div>
-            <label for="bookmark-rating-list">Select the rating of your bookmark</label>
+            <label for="bookmark-link-entry">Bookmark Link</label>
+            <input type="text" name="bookmark-link-entry" class="js-bookmark-link-entry" placeholder="Link of the bookmark">
+            <textarea name="bookmark-list-desc" class="js-bookmark-list-desc" rows="5" cols="50" placeholder="Youre description of the movie."></textarea>
+            <label for="bookmark-rating-list">Rating</label>
             <select name="bookmark-rating-list" class="js-bookmark-raiting-list">
+                <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
                 <option value="4">4</option>
