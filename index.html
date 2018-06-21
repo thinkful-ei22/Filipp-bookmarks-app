@@ -4,19 +4,57 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Bookmarks</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Bookmark App: A place to store your bookmarks!">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" type="text/css" media="screen" href="styles/index.css" />
-    <script src="main.js"></script>
 </head>
 <body>
     <div class="container">
         <h1>Bookmark List</h1>
         <form id="js-bookmark-list-form">
             <label for="bookmark-list-entry">Add a bookmark</label>
-            <input type="text" name="bookmark-list-entry" class="js-bookmark-list-entry" placeholder="Name of the movie">
+            <input type="text" name="bookmark-list-entry" class="js-bookmark-list-entry" placeholder="Title of the bookmark">
+            
+            <div>
+                <label for="bookmark-link-entry">Bookmark Link</label>
+            </div>
+                <input type="text" name="bookmark-link-entry" class="js-bookmark-link-entry" placeholder="Link of the bookmark">
+            <div>
+                <textarea name="bookmark-list-desc" class="js-bookmark-list-desc" rows="5" cols="50">Youre description of the movie.</textarea>
+            </div>
+            <label for="bookmark-rating-list">Select the rating of your bookmark</label>
+            <select name="bookmark-rating-list" class="js-bookmark-raiting-list">
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
             <button type="submit">Add bookmark</button>
         </form>
+        <ul class="bookmark-list js-bookmark-list">
+            <li class="js-item-element">
+                Title, Rating
+                <div class="bookmark-item-controls">
+                    <button class="bookmark-item-delete js-bookmark-item-delete">
+                        <span class="button-label">Delete</span>
+                    </button>
+                </div>
+            </li>
+
+
+            <li class="js-item-element">
+                    Title, Rating, Description
+                    <div class="bookmark-item-controls">
+                        <button class="bookmark-item-link js-bookmark-item-link">
+                            <span class="button-label">Link</span>
+                        </button>
+                        <button class="bookmark-item-delete js-bookmark-item-delete">
+                            <span class="button-label">Delete</span>
+                        </button>
+                    </div>
+                </li>
+
+        </ul>
     </div>
  
     
