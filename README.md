@@ -1,3 +1,6 @@
+Published on GitHub link: https://thinkful-ei22.github.io/Filipp-bookmarks-app/
+
+
 Fundamentals Final Project
 Build a Bookmarks App
 Project Overview
