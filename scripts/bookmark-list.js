@@ -28,9 +28,9 @@ const bookmarkList = (function() {
         ${itemRating}
         <a href="${item.url}" target="_blank">Visit Site</a>
         <div class="bookmark-item-controls">
-        <button class="bookmark-item-delete js-bookmark-item-delete">
-            <span class="button-label">Delete</span>
-        </button>
+            <button class="bookmark-item-delete js-bookmark-item-delete">
+             <span class="button-label">Delete</span>
+            </button>
         </div>
     </li>`;
   }
@@ -68,7 +68,7 @@ const bookmarkList = (function() {
       //console.log(`The submited values are ${newBookmarkTitle}, ${newBookmarkLink}, ${newBookmarkDesc}, and ${newBookmarkRating}`);
       
       api.createItem(newBookmarkTitle, newBookmarkLink, newBookmarkDesc, newBookmarkRating, function(newItem) {
-        console.log(newItem);
+        //console.log(newItem);
         store.addItem(newItem);
         render();
       }, function(error) {
@@ -80,13 +80,32 @@ const bookmarkList = (function() {
     });
   }
 
+  function getBookmarkIdFromElement(item) {
+    return $(item)
+      .closest('.js-item-element')
+      .data('item-id');
+  }
+  
+  function handleDeleteBookmarkClicked() {
+    $('.js-bookmark-list').on('click', '.js-bookmark-item-delete', event => {
+      //console.log('delete clicked');
+      const id = getBookmarkIdFromElement(event.currentTarget);
+      api.deleteItem(id, () => {
+        store.findAndDelete(id);
+        render();
+      });
+    });
+  }
 
+  //on change event listener for the filter. Using filter method, then recall render.
 
   
   
   
   function bindEventListeners() {
     handleNewBookmarkSubmit();
+    handleDeleteBookmarkClicked();
+
   }
   
   
