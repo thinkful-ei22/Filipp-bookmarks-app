@@ -8,7 +8,7 @@ const store = (function() {
   
   const addItem = function(item) {
     this.items.push(item);
-    //console.log(item);
+    console.log(item);
   };
 
   const findAndDelete = function(id) {
@@ -17,7 +17,7 @@ const store = (function() {
   
   const setError = function(err) {
     this.error = err;
-    console.log(this.error);
+    //console.log(this.error);
   };
   
   return {

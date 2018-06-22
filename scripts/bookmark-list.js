@@ -45,13 +45,16 @@ const bookmarkList = (function() {
   
   function render() {
     let items = store.items;
-    console.log('render running');
+    //console.log('render running');
 
     const bookmarkListItemsString = generateBookmarkItemsString(items);
     $('.js-bookmark-list').html(bookmarkListItemsString);
 
     if (store.error){
-      alert(store.error);
+      //console.log(store.error);
+      $('.js-alert-placeholder').html(`<div class="alert">
+      <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+      ${store.error}</div>`);
     }
 
 
