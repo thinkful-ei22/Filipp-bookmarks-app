@@ -48,6 +48,7 @@
 
   .js-bookmark-list-desc {
       margin-top: 20px;
+      display: inline-block;
   }
 
 form {
@@ -57,6 +58,29 @@ form {
 
 .checked {
     color: orange;
+}
+
+.webpage-link {
+  display: block;
+}
+
+.fa {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.input-label {
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.rating-label {
+  display: inline-block;
+}
+
+.new-item-submit {
+  display: block;
 }
 
 /* The alert message box */

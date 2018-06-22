@@ -19,20 +19,40 @@ const bookmarkList = (function() {
       }
     }
     //console.log(itemRating);
-    
 
-    return `
+    if (item.expanded === true) {
+      return `
     <li class="js-item-element" data-item-id="${item.id}">
      <h4>${item.title}</h4>
         <p>${item.desc}</p>
+        <a class="webpage-link" href="${item.url}" target="_blank">Visit Site</a>
         ${itemRating}
-        <a href="${item.url}" target="_blank">Visit Site</a>
         <div class="bookmark-item-controls">
+            <button class="bookmark-item-show js-bookmark-item-show">
+             <span class="button-label">More Info</span>
+            </button>
             <button class="bookmark-item-delete js-bookmark-item-delete">
              <span class="button-label">Delete</span>
             </button>
         </div>
     </li>`;
+    }
+    
+    else {
+      return `
+        <li class="js-item-element" data-item-id="${item.id}">
+         <h4>${item.title}</h4>
+            ${itemRating}
+            <div class="bookmark-item-controls">
+                <button class="bookmark-item-show js-bookmark-item-show">
+                 <span class="button-label">More Info</span>
+                </button>
+                <button class="bookmark-item-delete js-bookmark-item-delete">
+                 <span class="button-label">Delete</span>
+                </button>
+            </div>
+        </li>`;
+    }
   }
   
   
@@ -47,15 +67,21 @@ const bookmarkList = (function() {
     let items = store.items;
     //console.log('render running');
 
-    const bookmarkListItemsString = generateBookmarkItemsString(items);
-    $('.js-bookmark-list').html(bookmarkListItemsString);
 
     if (store.error){
-      //console.log(store.error);
+      console.log(`Error: ${store.error}`);
       $('.js-alert-placeholder').html(`<div class="alert">
       <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
       ${store.error}</div>`);
     }
+
+    if (store.searchRating) {
+      //console.log(`showing ratings only ${store.searchRating} or greater`);
+      items = store.items.filter(item => item.rating >= store.searchRating);
+    }
+
+    const bookmarkListItemsString = generateBookmarkItemsString(items);
+    $('.js-bookmark-list').html(bookmarkListItemsString);
 
 
   }
@@ -108,7 +134,26 @@ const bookmarkList = (function() {
     });
   }
 
-  //on change event listener for the filter. Using filter method, then recall render.
+  function handleMoreInfoButtonClicked() {
+    $('.js-bookmark-list').on('click', '.js-bookmark-item-show', event => {
+      //console.log('more info button clicked');
+      const id = getBookmarkIdFromElement(event.currentTarget);
+      store.findAndUpdateExpand(id, {expanded: true}, {expanded: false});
+      render();
+
+    });
+
+  }
+
+  function handleRatingFilterSelected() {
+    $('.js-filter-list').on('change', event => {
+      //console.log('filter has been changed');
+      const rating = $(event.currentTarget).val();
+      //console.log(rating);
+      store.setSearchRating(rating);
+      render();
+    });
+  }
 
   
   
@@ -116,6 +161,8 @@ const bookmarkList = (function() {
   function bindEventListeners() {
     handleNewBookmarkSubmit();
     handleDeleteBookmarkClicked();
+    handleMoreInfoButtonClicked();
+    handleRatingFilterSelected();
 
   }
   
