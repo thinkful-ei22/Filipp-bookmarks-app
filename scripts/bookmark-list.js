@@ -49,6 +49,12 @@ const bookmarkList = (function() {
 
     const bookmarkListItemsString = generateBookmarkItemsString(items);
     $('.js-bookmark-list').html(bookmarkListItemsString);
+
+    if (store.error){
+      alert(store.error);
+    }
+
+
   }
 
   function handleNewBookmarkSubmit() {
@@ -71,8 +77,10 @@ const bookmarkList = (function() {
         //console.log(newItem);
         store.addItem(newItem);
         render();
-      }, function(error) {
-        //what I want to do if error happens
+      }, function(err) {
+        const errorMessage = err.responseJSON.message;
+        //console.log(errorMessage);
+        store.setError(errorMessage);
         render();
       }); 
 
