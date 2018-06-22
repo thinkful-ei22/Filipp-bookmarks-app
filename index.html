@@ -18,12 +18,12 @@
         <form id="js-bookmark-list-form">
             <h3>Add a bookmark</h3>
             <label class="input-label" for="bookmark-list-entry">Bookmark Title</label>
-            <input type="text" name="bookmark-list-entry" class="js-bookmark-list-entry" placeholder="Title of the bookmark">
+            <input type="text" name="bookmark-list-entry" class="js-bookmark-list-entry" placeholder="Title of the bookmark" aria-label="Insert bookmark title here.">
             <label class="input-label" for="bookmark-link-entry">Bookmark Link</label>
-            <input type="text" name="bookmark-link-entry" class="js-bookmark-link-entry" placeholder="Link of the bookmark">
-            <textarea name="bookmark-list-desc" class="js-bookmark-list-desc" rows="5" cols="50" placeholder="Youre description of the website."></textarea>
-            <label class="rating-label" for="bookmark-rating-list">Rating</label>
-            <select name="bookmark-rating-list" class="js-bookmark-raiting-list">
+            <input type="text" name="bookmark-link-entry" class="js-bookmark-link-entry" placeholder="Link of the bookmark" aria-label="Insert bookmark link here.">
+            <textarea name="bookmark-list-desc" class="js-bookmark-list-desc" rows="5" cols="50" placeholder="Youre description of the website." aria-label="Insert bookmark description here."></textarea>
+            <label class="rating-label" for="bookmark-rating-list" aria-label="Select bookmark rating">Rating</label>
+            <select name="bookmark-rating-list" class="js-bookmark-raiting-list" aria-label="Select bookmark rating.">
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -35,7 +35,7 @@
 
         <div class="filter-placeholder js-filter-placeholder">
             <label class="filter-label" for="filter-list">Filter by rating:</label>
-            <select name="filter-list" class="js-filter-list">
+            <select name="filter-list" class="js-filter-list" aria-label="Select filter by rating here.">
                 <option value="1">1 or higher</option>
                 <option value="2">2 or higher</option>
                 <option value="3">3 or higher</option>

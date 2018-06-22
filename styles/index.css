@@ -79,6 +79,10 @@ form {
   display: inline-block;
 }
 
+.filter-placeholder {
+  margin-top: 10px;
+}
+
 .new-item-submit {
   display: block;
 }
