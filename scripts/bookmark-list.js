@@ -69,10 +69,10 @@ const bookmarkList = (function() {
 
 
     if (store.error){
-      console.log(`Error: ${store.error}`);
       $('.js-alert-placeholder').html(`<div class="alert">
       <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
       ${store.error}</div>`);
+      console.log(`Error: ${store.error}`);
     }
 
     if (store.searchRating) {
@@ -90,7 +90,13 @@ const bookmarkList = (function() {
     $('#js-bookmark-list-form').submit(function (event) {
       event.preventDefault();
       const newBookmarkTitle = $('.js-bookmark-list-entry').val();
-      const bookmarkLink = $('.js-bookmark-link-entry').val();
+      let newBookmarkLink = $('.js-bookmark-link-entry').val();
+      if (newBookmarkLink === '') {
+        console.log('Link field is empty.');
+      }
+      else {
+        newBookmarkLink = `https://${newBookmarkLink}`;
+      }
       const newBookmarkDesc = $('.js-bookmark-list-desc').val();
       const newBookmarkRating = $('.js-bookmark-raiting-list').val();
       $('.js-bookmark-list-entry').val('');
@@ -98,7 +104,9 @@ const bookmarkList = (function() {
       $('.js-bookmark-list-desc').val('');
       $('.js-bookmark-raiting-list').val('');
 
-      const newBookmarkLink = `https://${bookmarkLink}`;
+      
+      
+      //const newBookmarkLink = `https://${bookmarkLink}`;
 
       //console.log(`The submited values are ${newBookmarkTitle}, ${newBookmarkLink}, ${newBookmarkDesc}, and ${newBookmarkRating}`);
       
@@ -111,6 +119,7 @@ const bookmarkList = (function() {
         //console.log(errorMessage);
         store.setError(errorMessage);
         render();
+        store.setError(null);
       }); 
 
 

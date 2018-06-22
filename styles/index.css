@@ -4,6 +4,7 @@
   
   body {
     font-family: 'Roboto', sans-serif;
+    background-color: dodgerblue;
   }
   
   button, input[type="text"] {
@@ -36,6 +37,8 @@
     margin-bottom: 20px;
     border: 1px solid grey;
     padding: 20px;
+    border-radius: 25px;
+    background-color: white;
   }
   
   .bookmark-item {
@@ -54,6 +57,8 @@
 form {
     border: 1px solid grey;
     padding: 20px;
+    border-radius: 25px;
+    background-color: white;
 }
 
 .checked {
@@ -77,10 +82,21 @@ form {
 
 .rating-label {
   display: inline-block;
+  font-size: 18px;
+}
+
+.js-bookmark-raiting-list {
+  font-size: 16px;
+}
+
+.js-filter-list {
+  font-size: 16px;
 }
 
 .filter-placeholder {
   margin-top: 10px;
+  font-weight: bold;
+  font-size: 18px;
 }
 
 .new-item-submit {
@@ -90,7 +106,7 @@ form {
 /* The alert message box */
 .alert {
   padding: 20px;
-  background-color: #f44336; /* Red */
+  background-color: #ce0e00; /* Red */
   color: white;
   margin-bottom: 15px;
 }
